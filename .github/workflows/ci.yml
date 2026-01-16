@@ -1,0 +1,27 @@
+#Name
+#trigger / evwnt
+#job
+  #step
+
+name : React CI
+
+on : push
+
+jobs :
+  run-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+
+      - name: Run test
+        run: npm run test
+        with :
+          node-version: 18
